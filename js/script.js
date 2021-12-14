@@ -4,6 +4,18 @@ const robeUl = document.getElementById('random-robe-output')
 
 robeBtn.addEventListener('click', () => {
   robeUl.innerHTML = ''
+  robeUl.innerHTML = `
+          <li>Dagger</li>
+          <li>Dagger</li>
+          <li>Bullseye Lantern (Lit and filled)</li>
+          <li>Bullseye Lantern (Lit and filled)</li>
+          <li>Steel Mirror</li>
+          <li>Steel Mirror</li>
+          <li>10-foot pole</li>
+          <li>10-foot pole</li>
+          <li>Sack</li>
+          <li>Sack</li>
+  `
   rollPatches()
 })
 
@@ -64,7 +76,9 @@ function generatePatches() {
     patch = 'Rowboat (12 feet long)'
     console.log(patch)
   } else if (randomPatch >= 76 && randomPatch <= 83) {
-    patch = 'Spell scroll containing one spell of 1st to 3rd level'
+    let r = Math.floor(Math.random() * spells.length)
+    let spell = spells[r]
+    patch = `Scroll of ${spell}`
     console.log(patch)
   } else if (randomPatch >= 84 && randomPatch <= 90) {
     patch = 'Mastiff (2)'
@@ -84,3 +98,5 @@ function generatePatches() {
   li.appendChild(document.createTextNode(patch))
   robeUl.appendChild(li)
 }
+
+function generateScroll() {}
