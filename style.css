@@ -17,12 +17,12 @@ body {
 
 button {
   background-color: rgba(255, 255, 255, 0.2);
-  padding: 1rem;
-  font-family: inherit;
   border-radius: 10px;
   border: 1px solid white;
   color: white;
   cursor: pointer;
+  padding: 1rem;
+  font-family: inherit;
   margin: 5px;
 }
 
@@ -41,9 +41,29 @@ button:active {
 
 .btn-small {
   width: 175px;
-  font-size: 11px;
   height: 30px;
+  font-size: 11px;
   padding: 0 5px;
+}
+
+.inline-btn {
+  padding: 5px 5px;
+  margin: 3px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  border: 1px solid white;
+  color: white;
+  cursor: pointer;
+}
+
+.inline-btn.trash {
+  color: red;
+  background-color: rgba(255, 121, 121, 0.521);
+  border: 1px red solid;
+}
+
+.inline-btn.trash:hover {
+  box-shadow: 0 0 10px rgba(255, 21, 21, 0.7);
 }
 
 #copy-list {
@@ -56,20 +76,34 @@ button:active {
 
 .results {
   width: 100%;
-  /* text-align: left; */
+  text-align: left;
   line-height: 1rem;
 }
 
 .results ul {
-  padding-left: none;
+  padding: 0;
+  list-style-type: none;
 }
 
-.results ul li {
-  margin: 12px 0;
-  list-style-type: none;
+.patch {
+  display: flex;
+  margin: 10px 0;
   border: 1px solid white;
   border-radius: 5px;
   padding: 10px;
+  align-items: center;
+}
+
+.patch p {
+  margin: 0 auto 0 0;
+}
+
+.patch i {
+  margin: 5px;
+}
+
+.patch i:hover {
+  cursor: pointer;
 }
 
 .smallText {

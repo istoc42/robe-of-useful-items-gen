@@ -2,21 +2,52 @@ const robeBtn = document.getElementById('robe-btn')
 const robeUl = document.getElementById('random-robe-output')
 const patchesAmount = document.getElementById('patches-amount')
 const copyBtn = document.getElementById('copy-list')
+const patchEl = document.querySelector('.patch')
 
+// Generate robe button event listener
 robeBtn.addEventListener('click', () => {
   copyBtn.classList.remove('hide')
   robeUl.innerHTML = ''
   robeUl.innerHTML = `
-          <li>Dagger</li>
-          <li>Dagger</li>
-          <li>Bullseye Lantern (Lit and filled)</li>
-          <li>Bullseye Lantern (Lit and filled)</li>
-          <li>Steel Mirror</li>
-          <li>Steel Mirror</li>
-          <li>10-foot pole</li>
-          <li>10-foot pole</li>
-          <li>Sack</li>
-          <li>Sack</li>
+          <div class="patch">
+            <p>Dagger</p>
+          </div>
+
+          <div class="patch">
+            <p>Dagger</p>
+          </div>
+
+          <div class="patch">
+            <p>Bullseye Lantern (Lit and filled)</p>
+          </div>
+           
+          <div class="patch">
+            <p>Bullseye Lantern (Lit and filled)</p>
+          </div>
+           
+          <div class="patch">
+            <p>Steel Mirror</p>
+          </div>
+           
+          <div class="patch">
+            <p>Steel Mirror</p>
+          </div>
+           
+          <div class="patch">
+            <p>10-foot pole</p>
+          </div>
+           
+          <div class="patch">
+            <p>10-foot pole</p>
+          </div>
+           
+          <div class="patch">
+            <p>Sack</p>
+          </div>
+           
+          <div class="patch">
+            <p>Sack</p>
+          </div>
   `
   rollPatches()
 })
@@ -34,11 +65,13 @@ function rollPatches() {
   // Output 4d4 result to HTML
   patchesAmount.innerHTML = `<p>You rolled ${patchesRolled} extra patches</p>`
 
+  // For loop to run generatePatches as many times as patchesRolled
   for (let x = 0; x < patchesRolled; x++) {
     generatePatches()
   }
 }
 
+// Roll d100 and choose a patch based on result
 function generatePatches() {
   // Roll d100 to determine patch contents
   let randomPatch = Math.floor(Math.random() * 100 + 1)
@@ -95,15 +128,22 @@ function generatePatches() {
     patch = 'This is an error. Over 100'
   }
 
-  const li = document.createElement('li')
-
-  li.innerHTML = patch
-  robeUl.appendChild(li)
+  // Template for patch div
+  const div = document.createElement('div')
+  const patchHTML = `
+          <div class="patch">
+            <p>${patch}</p>
+            <button class="inline-btn re-roll"><i class="fa-lg fas fa-dice"></i></button>
+            <button class="inline-btn trash"><i class="fa-lg fas fa-trash-alt"></i></button>
+          </div>
+  `
+  div.innerHTML = patchHTML
+  robeUl.appendChild(div)
 }
 
 // Copy plain text content of robeUl to clipboard
 copyBtn.addEventListener('click', () => {
-  // Message to confirm copy
+  // Message to confirm copy, change back after an interval
   copyBtn.innerText = 'Copied to clipboard!'
   setTimeout(() => {
     copyBtn.innerHTML = `<i class="fas fa-copy"></i> Copy robe to clipboard`
