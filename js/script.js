@@ -1,8 +1,10 @@
 const robeBtn = document.getElementById('robe-btn')
-const patchesAmount = document.getElementById('patches-amount')
 const robeUl = document.getElementById('random-robe-output')
+const patchesAmount = document.getElementById('patches-amount')
+const copyBtn = document.getElementById('copy-list')
 
 robeBtn.addEventListener('click', () => {
+  copyBtn.classList.remove('hide')
   robeUl.innerHTML = ''
   robeUl.innerHTML = `
           <li>Dagger</li>
@@ -52,13 +54,13 @@ function generatePatches() {
     patch = 'Bag of 100 gp'
     console.log(patch)
   } else if (randomPatch >= 9 && randomPatch <= 15) {
-    patch = 'Silver coffer (1 foot long, 6 inches wide and deep) worth 500 gp'
+    patch = 'Silver coffer <br> <span class="smallText">(1 foot long, 6 inches wide and deep) worth 500 gp</span>'
     console.log(patch)
   } else if (randomPatch >= 16 && randomPatch <= 22) {
-    patch = 'Iron door (up to 10 feet wide and 10 feet high, barred on one side of your choice), which you can place in an opening you can reach; it conforms to fit the opening, attaching and hinging itself'
+    patch = 'Iron door <br> <span class="smallText">(up to 10 feet wide and 10 feet high, barred on one side of your choice), which you can place in an opening you can reach; it conforms to fit the opening, attaching and hinging itself</span>'
     console.log(patch)
   } else if (randomPatch >= 23 && randomPatch <= 30) {
-    patch = '10 gems worth 100 gp each'
+    patch = `10 gems worth 100 gp each`
     console.log(patch)
   } else if (randomPatch >= 31 && randomPatch <= 44) {
     patch = 'Wooden ladder (24 feet long)'
@@ -67,7 +69,7 @@ function generatePatches() {
     patch = 'A riding horse with saddle bags'
     console.log(patch)
   } else if (randomPatch >= 52 && randomPatch <= 59) {
-    patch = 'Pit (a cube 10 feet on a side), which you can place on the ground within 10 feet of you'
+    patch = 'Pit <br> <span class="smallText">(a cube 10 feet on a side), which you can place on the ground within 10 feet of you</span>'
     console.log(patch)
   } else if (randomPatch >= 60 && randomPatch <= 68) {
     patch = 'Potion of healing (4)'
@@ -84,7 +86,7 @@ function generatePatches() {
     patch = 'Mastiff (2)'
     console.log(patch)
   } else if (randomPatch >= 91 && randomPatch <= 96) {
-    patch = 'Window (2 feet by 4 feet, up to 2 feet deep), which you can place on a vertical surface you can reach'
+    patch = 'Window <br> <span class="smallText">(2 feet by 4 feet, up to 2 feet deep), which you can place on a vertical surface you can reach</span>'
     console.log(patch)
   } else if (randomPatch >= 97 && randomPatch <= 100) {
     patch = 'Portable ram'
@@ -95,8 +97,20 @@ function generatePatches() {
 
   const li = document.createElement('li')
 
-  li.appendChild(document.createTextNode(patch))
+  li.innerHTML = patch
   robeUl.appendChild(li)
 }
 
-function generateScroll() {}
+// Copy plain text content of robeUl to clipboard
+copyBtn.addEventListener('click', () => {
+  // Message to confirm copy
+  copyBtn.innerText = 'Copied to clipboard!'
+  setTimeout(() => {
+    copyBtn.innerHTML = `<i class="fas fa-copy"></i> Copy robe to clipboard`
+  }, 1500)
+
+  // Copy list to clipboard
+  navigator.clipboard.writeText(robeUl.innerText)
+
+  console.log('Copied to clipboard!')
+})

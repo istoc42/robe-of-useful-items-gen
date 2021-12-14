@@ -9,6 +9,7 @@ Click on the button to generate a random Robe of Useful Items
 # Features
 
 - Generates spell scrolls automatically
+- Copy list to clipboard
 
 # Features to be added
 

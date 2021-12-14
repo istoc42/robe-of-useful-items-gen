@@ -31,12 +31,47 @@ button:hover {
   transform: scale(1.03);
 }
 
+button:active {
+  transform: scale(0.98);
+}
+
+.btn {
+  width: 300px;
+}
+
+.btn-small {
+  width: 175px;
+  font-size: 11px;
+  height: 30px;
+  padding: 0 5px;
+}
+
+#copy-list {
+  cursor: copy;
+}
+
+.hide {
+  display: none;
+}
+
 .results {
   width: 100%;
-  text-align: left;
+  /* text-align: left; */
   line-height: 1rem;
+}
+
+.results ul {
+  padding-left: none;
 }
 
 .results ul li {
   margin: 12px 0;
+  list-style-type: none;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.smallText {
+  font-size: 11px;
 }
