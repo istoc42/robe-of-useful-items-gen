@@ -133,14 +133,6 @@ function generatePatches() {
   const patchHTML = `
           <div class="patch">
             <p>${patch}</p>
-            <div class="tooltip">
-              <button class="inline-btn re-roll"><i class="fa-lg fas fa-dice"></i></button>
-              <span class="tooltiptext">Re-roll patch</span>
-            </div>
-            <div class="tooltip">
-              <button class="inline-btn trash"><i class="fa-lg fas fa-trash-alt"></i></button>
-              <span class="tooltiptext">Delete patch</span>
-            </div>
           </div>
   `
   div.innerHTML = patchHTML
